@@ -1,0 +1,40 @@
+<div class="col-md-6">
+  <h2 class="text-center">Add Student</h2>
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit(type)">
+    
+
+    <div class="form-group">
+      <label for="firstName">First Name:</label>
+      <input type="text" formControlName="firstName" placeholder="First Name" name="firstName" class="form-control" id="firstName">
+      <div *ngIf="submitted && addForm.controls.firstName.errors" class="error">
+        <small class="text-danger" *ngIf="addForm.controls.firstName.errors.required">First Name is required</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name:</label>
+      <input type="text" formControlName="lastName" placeholder="Last name" name="lastName" class="form-control" id="lastName">
+      <div *ngIf="submitted && addForm.controls.lastName.errors" class="error">
+        <small class="text-danger" *ngIf="addForm.controls.lastName.errors.required">Last Name is required</small>
+      </div>
+      
+    </div>
+    <div class="form-group">
+      <label for="email">Email address:</label>
+      <input type="email" formControlName="email" placeholder="email" name="email" class="form-control" id="email">
+      <div *ngIf="submitted && addForm.controls.email.errors" class="error">
+        <small class="text-danger" *ngIf="addForm.controls.email.errors.required">Email is required</small>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Phone">Phone Number:</label>
+      <input type="tel" formControlName="phoneNumber" pattern ="^\d{10}$" name="phoneNumber" class="form-control" id="phoneNumber">
+      <div *ngIf="submitted && addForm.controls.phoneNumber.errors" class="error">
+        <small class="text-danger" *ngIf="addForm.controls.phoneNumber.errors.required">Phone Number is required</small>
+        <small class="text-danger" *ngIf="addForm.controls.phoneNumber.errors.pattern">Phone number must be 10 digits</small>
+      </div>
+    </div>
+    <button type="submit" (click)="onSubmit('Add')" class="btn btn-success">Add</button>&nbsp;
+    <button type="submit" (click)="onSubmit('Cancel')" class="btn btn-success">Cancel</button>
+  </form>
+</div>
